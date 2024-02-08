@@ -10,7 +10,7 @@
         "disabled": false,
         "config": {
             "confirmEmailSubject": "Confirm your email address",
-            "emailConfirmationUrl": "https://localhost/account/confirmation",
+            "emailConfirmationUrl": "https://localhost:3000/account/confirmation",
             "resetPasswordSubject": "Here's a link to reset your password",
             "resetPasswordUrl": "https://dmscreen.ai/reset"
         }
