@@ -1,10 +1,33 @@
-'use client'
-import React, { useEffect, useState } from 'react';
+'use client';
+import React, { useState, useEffect, useContext } from 'react';
 import Link from 'next/link';
 import Button from '@mui/material/Button';
 import { AppBar, Icon, IconButton, Toolbar } from '@mui/material';
+import AccountIcon from '@mui/icons-material/AccountCircle';
+import SignupDialog from './auth/Signup';
+import LoginDialog from './auth/Login';
+import { UserContext } from '@/contexts/user.context';
 
 const Header: React.FC = () => {
+  const [openSignupDialog, setOpenSignupDialog] = useState(false);
+  const [openLoginDialog, setOpenLoginDialog] = useState(false);
+  const { fetchUser, user, logout } = useContext(UserContext)
+
+  useEffect(() => {
+    fetchUser()
+  },[])
+
+  useEffect(() => {
+    console.log(user)
+  }, [user])
+
+  const handleLogOut = () => {
+    logout().then(() => {
+      fetchUser().then(() => {
+        console.log('logged out')
+      })
+    })
+  }
 
   return (
     <AppBar className="bg-primary" position="static">
@@ -14,28 +37,30 @@ const Header: React.FC = () => {
       </div>  
       <div>
       <Link href='/dashboard' className="text-white-text text-2xl font-sans">Dashboard</Link>
-
-        {/* {user ? (
+        {user ? (
           <Button 
-            onClick={() => auth.signOut()}
+            onClick={handleLogOut}
             variant="outlined"
-            startIcon={<AccountIcon />}
             >
             Logout
           </Button>
           ) : (
-            <Button onClick={handleLoginDialogOpen}>
-              Login
-            </Button>
-          )}       */}
-      </div> 
-      
-             
-        {/* <Link 
-          href="/customer">
+            <>
+              <Button onClick={() => setOpenLoginDialog(true)}>
+                Login
+              </Button>
+              <Button onClick={() => setOpenSignupDialog(true)}>
+                Signup
+              </Button>
+            </>
+          )}      
+      </div>
+        <Link 
+          href="/account">
           <p className="text-white-text font-sans">Account</p>
-        </Link>  */}
-        {/* <LoginDialog open={isLoginDialogOpen} onClose={handleLoginDialogClose} /> */}
+        </Link> 
+        <LoginDialog open={openLoginDialog} onClose={() => setOpenLoginDialog(false)} />
+        <SignupDialog open={openSignupDialog} onClose={() => setOpenSignupDialog(false)} />
         </Toolbar>
     </AppBar>
   );

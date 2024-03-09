@@ -4,7 +4,7 @@ import React from 'react';
 
 const Footer: React.FC = () => {
   return (
-      <AppBar className="bg-primary" position="static">
+      <AppBar className="bg-primary" position="fixed" style={{ top: 'auto', bottom: 0 }}>
         <Toolbar className=" bg-primary flex flex-row justify-between">
           <div>          
             <ul>

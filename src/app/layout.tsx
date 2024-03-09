@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { montserrat, merriweather } from '@/app/ui/fonts';
 import "./globals.css";
-import Layout from '@/components/Layout';
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { UserProvider } from "@/contexts/user.context";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,10 +20,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${montserrat.variable} ${merriweather.variable}`}>
-        <Layout>
-          {children}
-        </Layout>        
+      <body className={`${montserrat.variable} ${merriweather.variable}`}>  
+      <UserProvider>
+        <Header/>
+          <main>{children}</main>
+        <Footer />  
+      </UserProvider>    
+     
       </body>
     </html>
   )
