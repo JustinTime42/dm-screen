@@ -16,12 +16,14 @@
     "@mui/material": "^5.15.9",
     "draft-js": "^0.11.7",
     "draftjs-to-markdown": "^0.6.0",
+    "mongodb": "^6.4.0",
     "next": "14.1.0",
     "novel": "^0.1.22",
     "react": "^18",
     "react-dom": "^18",
     "react-draft-wysiwyg": "^1.15.0",
-    "realm-web": "^2.0.0"
+    "realm-web": "^2.0.0",
+    "swr": "^2.2.5"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.4.2",
