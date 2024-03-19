@@ -3,8 +3,8 @@
 ### Front End
 
 - Nextjs
-- HTML
-- CSS
+- Tailwind
+- Material UI
 
 ### Back End
 
